@@ -1,3 +1,15 @@
+# Folder to store the service account credential
+credential/*
+!credential/.gitkeep
+
+# Folder to store the downloaded files to be uploaded
+buffer_folder/*
+!buffer_folder/.gitkeep
+
+###############################################################################
+# Generic ignores ----------------------------------------------------------- #
+###############################################################################
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -127,3 +139,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Pycharm configuration
+.idea/
+
+# Visual Studio configuration
+.vscode/
