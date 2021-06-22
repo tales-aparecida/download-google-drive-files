@@ -1,0 +1,28 @@
+[tool.black]
+line-length = 88
+
+
+[tool.isort]
+profile = "black"
+
+
+[tool.flake8]
+# Flake8 don't support pyproject.toml yet (https://github.com/PyCQA/flake8/issues/234)
+# Its settings are defined at .flake8
+
+
+[tool.pylint]
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pylint.messages_control]
+disable = [
+    "C0326", # Black deals with whitespace around operators
+    "C0330", # Black deals with closing brackets indentation
+]
+
+[tool.pylint.typecheck]
+generated-members = [
+    'googleapiclient.discovery.Resource.*', # Avoid "Instance of 'Resource' has no 'files' member"
+]

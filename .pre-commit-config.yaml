@@ -1,0 +1,22 @@
+repos:
+  - repo: https://github.com/pycqa/isort
+    rev: 5.8.0
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/psf/black
+    rev: 19.3b0
+    hooks:
+      - id: black
+
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        description: "This hook checks for pylint errors using the active virtual environment."
+        entry: pylint
+        language: system
+        verbose: true
+        types: [python]
+        args:
+          - --errors-only
