@@ -92,6 +92,8 @@ $ pre-commit install
 pre-commit installed at .git/hooks/pre-commit
 ```
 
+The first commit may take a while to run, so its recommended to commit via terminal, instead of using any kind of plugin, to follow the process.
+
 ### Suggested editor configs
 
 #### VScode
