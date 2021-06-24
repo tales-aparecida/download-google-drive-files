@@ -1,8 +1,9 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-informational)](https://github.com/tales-aparecida/dump-google-drive/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-informational)](https://github.com/tales-aparecida/download-google-drive-files/blob/main/LICENSE)
 ![Python >= 3.6](https://img.shields.io/badge/Python-≥3.6-informational.svg)
 [![Code style: black](https://img.shields.io/badge/Code%20Style-Black-000000.svg)](https://github.com/psf/black)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-active?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-# dump-google-drive
+# download-google-drive-files
 
 A small script to download a file or a whole folder from Google Drive.
 
@@ -60,7 +61,7 @@ First, **share the desired resource**, file or folder, with the service account.
 Now copy the resource URL and pass it to the `download_from_google_drive()` function, or run the script with:
 
 ```sh
-$ python download.py "GOOGLE DRIVE RESOURCE URL"
+$ python src/download.py "GOOGLE DRIVE RESOURCE URL"
 ```
 
 The URL should look a bit like "https://drive.google.com/drive/folders/2KRQwhxUpJl-JfRFNu94telK0635Kz4Hd?usp=sharing". The random characters are the resource ID, which will actually be used to find and download it.
@@ -69,7 +70,7 @@ The URL should look a bit like "https://drive.google.com/drive/folders/2KRQwhxUp
 
 ## How to contribute
 
-This project uses [Black](https://github.com/psf/black) as code style and autoformatter, along with the linters [Flake8](https://github.com/PyCQA/flake8) and [Pylint](https://github.com/PyCQA/pylint/). They will be enforced when you try to commit via `git hooks`.
+This project uses [Black](https://github.com/psf/black) as code style and autoformatter, along with the linters [Flake8](https://github.com/PyCQA/flake8) and [Pylint](https://github.com/PyCQA/pylint/). The first two will be enforced when you try to commit and the latter when you try to push via `git hooks` handled by [pre-commit](https://github.com/pre-commit/pre-commit).
 
 We try to follow the [Google Style Python Docstrings](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html), but they will not be **automatically** enforced. However, if the reviewers _suggest_ that it could enhance the code quality, try to comply.
 
@@ -85,14 +86,16 @@ $ pip install -r requirements_dev.txt
 
 ### Setup git hooks with pre-commit
 
-Run `pre-commit install` to set up the _git hooks_, which will make sure that every code that you commit will comply to the _enforced code style rules_. Which means that every time you try to commit something, the autoformatter will fix any mistakes and **you will need to _stage_ those offending files again**.
+Run `pre-commit install` to set up the _git hooks_, which will make sure that every code that you commit and push will comply to the _enforced code style rules_. Which means that every time you try to commit something, the autoformatter will fix any mistakes and **you will need to _stage_ those offending files again**, unless you call `git commit --no-verify`; and when you'll try to push the **pylint** will check for errors that must be fixed and commited, unless you run `git push --no-verify`.
+
+**NOTE:** You must run `git push` with the virtual environment active, otherwise **pylint** will raise import errors. It is knowns that Visual Studio Code source control doesn't run git commands under the virtual environment, despite the interpreter being properly configured.
 
 ```
 $ pre-commit install
 pre-commit installed at .git/hooks/pre-commit
 ```
 
-The first commit may take a while to run, so its recommended to commit via terminal, instead of using any kind of plugin, to follow the process.
+The first commit may take a while to run, so its recommended to commit via terminal, instead of using any kind of plugin or IDE extension, to follow the pre-commit setup.
 
 ### Suggested editor configs
 
